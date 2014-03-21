@@ -18,17 +18,15 @@ imagefiles = dir([PathName '/']); % Read the names of all files in the folder
 k = length(imagefiles);
 for d = 1:k
     % Check file names for the image types
-    test_image_name = [imagefiles(d).name];
+    test_image_name = [PathName '/' imagefiles(d).name];
     t= length(test_image_name);
-    if (t >4)
-        end_of_test_image_name = [test_image_name(t-2) test_image_name(t-1) test_image_name(t)];
-        str = sprintf(end_of_test_image_name);
+    end_of_test_image_name = [test_image_name(t-2) test_image_name(t-1) test_image_name(t)];
+    str = sprintf(end_of_test_image_name);
     
-        % Add here the types of image files to be processed (for example 'gif')
-        if strcmp(str,'JPG') || strcmp(str,'jpg') || strcmp(str,'png') || strcmp(str,'PNG') || strcmp(str,'bmp') || strcmp(str,'BMP')|| strcmp(str,'tif') || strcmp(str,'TIF')
+    % Add here the types of image files to be processed (for example 'gif')
+    if strcmp(str,'JPG') || strcmp(str,'jpg') || strcmp(str,'png') || strcmp(str,'PNG') || strcmp(str,'bmp') || strcmp(str,'BMP')|| strcmp(str,'tif') || strcmp(str,'TIF')
         
-        Main(test_image_name,block_size,PathName); 
-      end
+    Main(PathName,test_image_name,block_size); 
     end
 end
 

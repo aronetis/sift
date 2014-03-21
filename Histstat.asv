@@ -1,0 +1,28 @@
+% The function to build special type of histograam
+% Author: Dmitry Samal
+% 19.03.2014
+
+function [b_vector,c_vector] = Histstat(matrix,max_value)
+global fid;
+b_vector = zeros(max_value+1,1);
+[m,n] = size(matrix);
+r=m*n;
+for i = 1:r 
+    
+    b_vector(matrix(i)+1) = b_vector(matrix(i)+1)+1;
+end
+t = max(b_vector);
+p=0;
+c_vector = zeros(t,1);
+for j = 1:max_value
+    f = b_vector(j);
+    if f ~=0
+     c_vector(f) = c_vector(f)+1;
+     p = p+1;
+    end
+    
+   % fprintf(fid,'j = %i',j,' b_vector(j): %i \n',b_vector(j)); %debug
+end
+end
+
+

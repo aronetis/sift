@@ -1,0 +1,57 @@
+% The image frame cutting function
+% Author: Dmitry Samal
+% 20.03.2014
+
+% Loading the image has to being processed
+function [result_Flag] = Cut_frame(fname,frame_size,number_of_frames, output_dir)
+global fid;
+
+[imagergb] = imread(fname);
+    
+ k = rand(1,number_of_frames);
+ 
+ [m,n] = size(imagergb);
+
+ fprintf(fid,'image size: %i,%i \n', size(imagergb));
+
+
+    for j = 1:number_of_frames
+
+        s = floor(k(j)*m);
+        t = floor(k(j)*n);
+        
+        if  s+frame_size(1) > m 
+            s = s - frame_size(1);
+        end
+        if  t+frame_size(2) > n 
+            t = t - frame_size(2);
+        end
+    fprintf(fid,'(%i,%i), ',s,t);        
+    
+    t= length(fname);
+    end_of_test_image_name = fname(1:t-4);
+    str = sprintf(end_of_test_image_name);
+   
+    if ~exist(output_dir, 'dir')
+        mkdir(output_dir);
+    end
+    
+    frame_name =sprintf('%s_%ix%i_%i',str,frame_size(2),frame_size(2),j);     
+    outputpath = [output_dir '\' frame_name '.jpg'];
+
+    rect = [s,t,frame_size(1),frame_size(2)];
+   
+    %frame = imcrop(imagergb, rect);
+    frame = imagergb;
+    
+    
+    frame = imagergb(rect);
+    figure (2); imshow(frame);
+    
+    
+    imwrite(frame,outputpath);
+        
+    end
+end
+
+  
