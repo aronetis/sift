@@ -6,7 +6,7 @@ function [result_Flag,improc,improc2] = ImageProcessing(imagergb,block_size,T_de
 
 global fid;
 
-N_image =  imresize(imagergb,0.256,'nearest'); % Get smaller image of 1/4 size of the gray image
+N_image =  imresize(imagergb,0.256,'bilinear');%'nearest'); % Get smaller image of 1/4 size of the gray image
 I_gray = rgb2gray(N_image);       % Get the gray variant image of the original one
 % I_red = N_image(:,:,1);
 % I_grn = N_image(:,:,2);
@@ -17,11 +17,11 @@ J_image = double(I_gray);
 fprintf(fid,'J_image size: %i \n', size(J_image));
 B_image = blockproc(J_image,[1,1],@Block_sum,'BorderSize',[1,1], 'TrimBorder', false,'UseParallel',true); % Compute function wnd_sum for each sliding window of the integral image 
 
-B_size = size(B_image);
-fprintf(fid,'B_image size: %i \n',B_size(1));
+B_size = size(I_gray);
+fprintf(fid,'B_image size: %i \n',I_gray(1));
 for row=1:B_size(1)
     for colomn=1:B_size(2)
-        fprintf(fid, ' %d', B_image(row,colomn));
+        fprintf(fid, ' %d', I_gray(row,colomn));
     end
     fprintf(fid, '\n');
 end
