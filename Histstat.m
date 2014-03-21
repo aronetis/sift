@@ -10,7 +10,7 @@ b_vector = zeros(q,1);
 [m,n] = size(matrix);
 r=m*n;
 for i = 1:r 
-    b_vector(matrix(i)+1) = b_vector(matrix(i)+1)+1;
+    b_vector(floor(matrix(i))+1) = b_vector(matrix(i)+1)+1;
 end
 % p=0;
 % 

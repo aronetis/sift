@@ -9,7 +9,12 @@ global fid;
 N_image =  imresize(imagergb,0.256,'bilinear');%'nearest'); % Get smaller image of 1/4 size of the gray image
 J_gray = rgb2gray(N_image);       % Get the gray variant image of the original one
 
-I_gray = edge(J_image,'canny');       % Get the gray variant image of the original one
+k = [1 2 1; 0 0 0; -1 -2 -1];
+H = conv2(double(J_gray),k, 'same');
+V = conv2(double(J_gray),k','same');
+I_gray = floor(sqrt(H.*H + V.*V));
+
+%I_gray = edge(J_gray,'canny');       % Get the gray variant image of the original one
 % I_red = N_image(:,:,1);
 % I_grn = N_image(:,:,2);
 % I_blu = N_image(:,:,3);
