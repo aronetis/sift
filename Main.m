@@ -7,7 +7,7 @@ function [result_Flag] = Main(fname,block_size,PathName)
   
 % Time start
 t1 = clock;
-
+T_delta = 0.1; %
 if (nargin < 2)
     block_size = [16 16]; % Initialization of the size of the sliding window paramete
 end
@@ -30,7 +30,7 @@ fprintf(fid,'File name: %s\n', fname);
 % The minimal and maximal sizes of comparied objects
 
 % The processing function calling
-  [flag,improc,J_image] = ImageProcessing(imagergb,block_size);
+  [flag,improc,J_image] = ImageProcessing(imagergb,block_size,T_delta);
   
             %Cut_frame(fname,[32 32],16,'E:\aActive projects_Активные проекты\Odesk\First\Test');
 

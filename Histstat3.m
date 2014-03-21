@@ -2,10 +2,10 @@
 % Author: Dmitry Samal
 % 19.03.2014
 
-function [b_vector,c_vector] = Histstat3(matrix_A,matrix_B,matrix_C,matrix_D,s_max,s_min,T_delta);
+function [b_vector,c_vector] = Histstat3(matrix_A,matrix_B,matrix_C,matrix_D,s_,T_delta);
 global fid;
-Delta = floor((s_max-s_min)*T_delta/2);
-q = s_max+1;
+Delta = floor((s_(1)-s_(2))*T_delta/2);
+q = s_(1)+1;
 b_vector = zeros(q,1);
 b_red = zeros(q,1);
 b_grn = zeros(q,1);

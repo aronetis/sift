@@ -3153,3 +3153,34 @@ J_image size: 394
 J_image size: 525 
 E_3: 158096 
 The processing time is 110.222 seconds
+File name: DSC01187.bmp
+J_image size: 394 
+J_image size: 525 
+File name: DSC01187.bmp
+J_image size: 394 
+J_image size: 525 
+File name: DSC01187.JPG
+J_image size: 394 
+J_image size: 525 
+File name: DSC01187.bmp
+J_image size: 394 
+J_image size: 525 
+File name: DSC01187.bmp
+J_image size: 394 
+J_image size: 525 
+File name: DSC01187.bmp
+J_image size: 394 
+J_image size: 525 
+File name: DSC01187.bmp
+J_image size: 394 
+J_image size: 525 
+File name: DSC01187.bmp
+J_image size: 394 
+J_image size: 525 
+E_3: 150961 
+The processing time is 140.919 seconds
+File name: DSC01187_180.bmp
+J_image size: 394 
+J_image size: 525 
+E_3: 150771 
+The processing time is 141.292 seconds

@@ -2,7 +2,7 @@
 % Author: Dmitry Samal
 % 17.03.2014
 
-function [result_Flag,improc,improc2] = ImageProcessing(imagergb,block_size)
+function [result_Flag,improc,improc2] = ImageProcessing(imagergb,block_size,T_delta)
 
 global fid;
 
@@ -25,15 +25,17 @@ J_image = double(I_blu);
 B_blu = blockproc(J_image,[1,1],@Block_sum,'BorderSize',[1,1], 'TrimBorder', false,'UseParallel',true); % Compute function wnd_sum for each sliding window of the integral image 
 
 s_max = max([max(max(B_gray)) max(max(B_red)) max(max(B_grn)) max(max(B_blu))]);
+s_min = min([min(min(B_gray)) min(min(B_red)) min(min(B_grn)) min(min(B_blu))]);
 
-[D_array,E_array] = Histstat3(B_gray,B_red,B_grn,B_blu,s_max);
+figure(2);
+[D_array,E_array] = Histstat3(B_gray,B_red,B_grn,B_blu,[s_max s_min],T_delta);
 fprintf(fid,'E_3: %i \n', E_array);
 %-------
 
 
 
 %D_image = mat2gray(B_image/16, [0 256]);
-figure(2);
+
 hist(D_array);
 
 figure(3);
