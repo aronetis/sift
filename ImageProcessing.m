@@ -24,11 +24,11 @@ J_image = double(I_gray);
 fprintf(fid,'J_image size: %i \n', size(J_image));
 B_image = blockproc(J_image,[1,1],@Block_sum,'BorderSize',[1,1], 'TrimBorder', false,'UseParallel',true); % Compute function wnd_sum for each sliding window of the integral image 
 
-B_size = size(I_gray);
+B_size = size(B_image);
 fprintf(fid,'B_image size: %i \n',I_gray(1));
 for row=1:B_size(1)
     for colomn=1:B_size(2)
-        fprintf(fid, ' %d', I_gray(row,colomn));
+        fprintf(fid, ' %d', B_image(row,colomn));
     end
     fprintf(fid, '\n');
 end
