@@ -7,7 +7,9 @@ function [result_Flag,improc,improc2] = ImageProcessing(imagergb,block_size,T_de
 global fid;
 
 N_image =  imresize(imagergb,0.256,'bilinear');%'nearest'); % Get smaller image of 1/4 size of the gray image
-I_gray = rgb2gray(N_image);       % Get the gray variant image of the original one
+J_gray = rgb2gray(N_image);       % Get the gray variant image of the original one
+
+I_gray = edge(J_image,'canny');       % Get the gray variant image of the original one
 % I_red = N_image(:,:,1);
 % I_grn = N_image(:,:,2);
 % I_blu = N_image(:,:,3);
