@@ -23,16 +23,20 @@ format shortg;
 
 %Whrite a log file
 global fid
-fid = fopen('log_.txt','at');
+fid = fopen('log_2.txt','at');
 fprintf(fid,'File name: %s\n', fname);
 
 % Threshold of likehood (in percents)
 % The minimal and maximal sizes of comparied objects
 
 % The processing function calling
-  [flag,improc,J_image] = ImageProcessing(imagergb,block_size,T_delta);
   
-            %Cut_frame(fname,[32 32],16,'E:\aActive projects_Активные проекты\Odesk\First\Test');
+    
+        waveletcompress(imagergb);
+  
+    %[flag,improc,J_image] = ImageProcessing(imagergb,block_size,T_delta);
+    
+        %Cut_frame(fname,[32 32],16,'E:\aActive projects_Активные проекты\Odesk\First\Test');
 
 t2 = clock;
 e = etime(t2,t1);
