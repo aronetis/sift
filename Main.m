@@ -32,11 +32,11 @@ fprintf(fid,'File name: %s\n', fname);
 % The processing function calling
   
     
-        waveletcompress(imagergb);
+         waveletcompress(imagergb);
   
     %[flag,improc,J_image] = ImageProcessing(imagergb,block_size,T_delta);
     
-        %Cut_frame(fname,[32 32],16,'E:\aActive projects_Активные проекты\Odesk\First\Test');
+        %Cut_frame(fname,[3 3],16,'E:\aActive projects_Активные проекты\Odesk\First\Test_3by3');
 
 t2 = clock;
 e = etime(t2,t1);

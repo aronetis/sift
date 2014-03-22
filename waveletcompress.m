@@ -1,7 +1,10 @@
-function[] = waveletcompress(input_image1)
+function[] = waveletcompress(input_image2)
 global fid;
 
-%input_image=imnoise(input_image1,'speckle',.01);  % Get some noise
+input_image = rgb2gray(input_image2);
+input_image1=imnoise(input_image,'speckle',.01);  % Get some noise
+
+
 
 figure (2);
 imshow(input_image1);
@@ -12,13 +15,13 @@ n= 2;%input('enter the decomposition level=');
 
 [c,s]=wavedec2(input_image1,n,Lo_D,Hi_D);
 
-disp(' the decomposition vector Output is');
-
-disp(c);
+% disp(' the decomposition vector Output is');
+% 
+% disp(c);
 t =0;
 B_size = size(c);
 fprintf(fid,'Size of Decomposition vector Output: %i \n',B_size(2));
-for row=1:500% B_size(2)
+for row=1:B_size(2)
     
     fprintf(fid, ' %.3f', c(row));
     
