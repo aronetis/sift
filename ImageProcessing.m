@@ -7,7 +7,7 @@ function [result_Flag,improc,improc2] = ImageProcessing(imagergb,block_size,T_de
 global fid;
 
 N_image =  imresize(imagergb,0.256,'bilinear');%'nearest'); % Get smaller image of 1/4 size of the gray image
-%J_gray = rgb2gray(N_image);       % Get the gray variant image of the original one
+J_gray = rgb2gray(N_image);       % Get the gray variant image of the original one
 
 % k = [1 2 1; 0 0 0; -1 -2 -1];
 % H = conv2(double(J_gray),k, 'same');
@@ -19,11 +19,12 @@ N_image =  imresize(imagergb,0.256,'bilinear');%'nearest'); % Get smaller image 
 % I_grn = N_image(:,:,2);
 % I_blu = N_image(:,:,3);
                             %J_image =  integralImage(N_image); % Compute the integral image of the processing one
-                            
-J_image = double(N_image);
-fprintf(fid,'J_image size: %i \n', size(J_image));
-B_image = blockproc(J_image,[1,1],@Block_sum,'BorderSize',[1,1], 'TrimBorder', false,'UseParallel',true); % Compute function wnd_sum for each sliding window of the integral image 
 
+J_image = double(J_gray);
+fprintf(fid,'J_image size: %i \n', size(J_image));
+K_image = blockproc(J_image,[1,1],@Block_sum,'BorderSize',[1,1], 'TrimBorder', false,'UseParallel',true); % Compute function wnd_sum for each sliding window of the integral image 
+
+B_image = floor(K_image);
 B_size = size(B_image);
 %fprintf(fid,'B_image size: %i \n',I_gray(1));
 for row=1:B_size(1)
@@ -33,7 +34,7 @@ for row=1:B_size(1)
     fprintf(fid, '\n');
 end
 
-[D_array,E_array] = Histstat(B_image,max(max(B_image)));
+[D_array,E_array] = Histstat((B_image),max(max(B_image)));
 fprintf(fid,'E_grey: %i \n', E_array);                            
                             
 %-------
